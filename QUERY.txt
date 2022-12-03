@@ -1,0 +1,43 @@
+select count(IdVerbale) as NumeroVerbali  from verbale
+select count(IdVerbale) as NumeroVerbali, IdTrasgressore  from verbale group by IdTrasgressore 
+select count(IdVerbale) as NumeroVerbali, IdViolazione  from verbale group by IdViolazione 
+select sum(DecurtamentoPunti) as TotalePuntiDecurtati, IdTrasgressore from Verbale group by IdTrasgressore
+
+select Cognome, Nome, DataViolazione, IndirizzoViolazione, Importo, DecurtamentoPunti 
+from Anagrafica as A 
+inner join  
+Verbale as V on
+A.IdTrasgressore  = V.IdTrasgressore
+where Citta = 'Palermo'	
+
+Select Cognome, Nome, Indirizzo, DataViolazione, Importo, DecurtamentoPunti
+from Anagrafica as a
+inner join 
+Verbale as v on
+a.IdTrasgressore = v.IdTrasgressore
+where DataViolazione between '2020-01-01' and '2022-12-31'
+
+Select Sum(importo) as TotaleImporti, Cognome
+from Anagrafica as a
+inner join
+Verbale as v on
+a.IdTrasgressore = v.IdTrasgressore
+group by Cognome
+
+select * from Anagrafica where Citta = 'Palermo'
+
+select count(IdViolazione) as TotaleMulte, NominativoAgente from Verbale group by NominativoAgente
+
+Select Cognome, Nome, Indirizzo, DataViolazione, Importo, DecurtamentoPunti
+from Anagrafica as a
+inner join 
+Verbale as v on
+a.IdTrasgressore = v.IdTrasgressore
+where DecurtamentoPunti > 5
+
+Select Cognome, Nome, Indirizzo, DataViolazione, Importo, DecurtamentoPunti
+from Anagrafica as a
+inner join 
+Verbale as v on
+a.IdTrasgressore = v.IdTrasgressore
+where Importo > 400
